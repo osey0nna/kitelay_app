@@ -1,59 +1,91 @@
 <x-app-layout>
     <x-slot name="header">
-        <div>
-            <p class="text-xs font-bold uppercase tracking-[0.22em] text-sky-600">Juri Workspace</p>
-            <h2 class="text-2xl font-bold text-slate-900">Perlombaan yang Ditugaskan</h2>
+        <div class="flex flex-col gap-2 relative z-10">
+            <div class="inline-flex items-center gap-2 rounded-sm border-l-4 border-amber-400 bg-gradient-to-r from-red-900/40 to-[#0a0a0c] px-4 py-2 w-fit shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                <span class="material-symbols-outlined text-[16px] text-amber-400">gavel</span>
+                <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Juri Workspace</span>
+            </div>
+            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">Daftar Tugas Juri</h2>
         </div>
     </x-slot>
 
-    <div class="py-10">
-        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:px-8">
-            <x-page-hero
-                eyebrow="Ringkasan"
-                title="Daftar lomba yang bisa kamu nilai sebagai juri."
-                description="Setiap juri hanya melihat perlombaan yang memang di-assign admin, jadi area kerja tetap fokus dan rapi."
-                accent="orange"
-            />
+    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+        
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out" 
+             :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
+            
+            <section class="rounded-xl border border-neutral-800 bg-[#0a0a0c] p-8 shadow-2xl">
+                <p class="text-[11px] font-black uppercase tracking-widest text-amber-500">Ringkasan</p>
+                <h3 class="mt-2 text-2xl font-black uppercase tracking-wide text-white">Daftar lomba yang bisa kamu nilai sebagai juri.</h3>
+                <p class="mt-3 text-sm text-slate-400">Setiap juri hanya melihat perlombaan yang ditugaskan oleh admin, jadi area kerja tetap fokus dan rapi.</p>
+            </section>
 
-            <div class="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-                @forelse ($perlombaans as $perlombaan)
-                    <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">{{ str($perlombaan->status)->replace('_', ' ')->title() }}</p>
-                        <h3 class="mt-3 text-2xl font-black tracking-[-0.03em] text-slate-950">{{ $perlombaan->nama_lomba }}</h3>
-                        <p class="mt-4 text-sm leading-7 text-slate-600">{{ \Illuminate\Support\Str::limit($perlombaan->deskripsi, 120) }}</p>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                @if(isset($perlombaans) && $perlombaans->count() > 0)
+                    @foreach ($perlombaans as $lomba)
+                        <article class="tilt-card flex flex-col justify-between rounded-xl border border-neutral-800 bg-[#0a0a0c] p-6 shadow-xl transition-all hover:border-amber-500/50">
+                            
+                            <div>
+                                <span class="inline-block px-3 py-1 mb-4 text-[9px] font-black uppercase tracking-widest bg-sky-900/30 text-sky-400 border border-sky-500/30 skew-x-[-10deg]">
+                                    <span class="skew-x-[10deg]">{{ str($lomba->status)->replace('_', ' ')->title() }}</span>
+                                </span>
+                                
+                                <h3 class="text-xl font-black uppercase tracking-wide text-white">{{ $lomba->nama_lomba }}</h3>
+                                <p class="mt-2 text-xs leading-relaxed text-slate-500 line-clamp-2">{{ $lomba->deskripsi }}</p>
 
-                        <div class="mt-6 grid grid-cols-2 gap-4">
-                            <div class="rounded-2xl bg-slate-50 p-4">
-                                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Peserta</p>
-                                <p class="mt-2 text-2xl font-black text-slate-950">{{ $perlombaan->pendaftarans_count }}</p>
+                                <div class="mt-6 grid grid-cols-2 gap-3">
+                                    <div class="rounded-xl border border-neutral-800 bg-[#050505] p-4 text-center">
+                                        <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">Peserta</p>
+                                        <p class="mt-1 text-2xl font-black text-white">{{ $lomba->pendaftarans_count ?? 0 }}</p>
+                                    </div>
+                                    <div class="rounded-xl border border-neutral-800 bg-[#050505] p-4 text-center">
+                                        <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">Kriteria</p>
+                                        <p class="mt-1 text-2xl font-black text-white">{{ $lomba->kriterias_count ?? 0 }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="rounded-2xl bg-sky-50 p-4">
-                                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">Kriteria</p>
-                                <p class="mt-2 text-2xl font-black text-slate-950">{{ $perlombaan->kriterias_count }}</p>
-                            </div>
-                        </div>
 
-                        <div class="mt-6 flex flex-col gap-3">
-                            <a href="{{ route('juri.penilaian.submissions', $perlombaan) }}" class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800">
-                                Lihat Submission
-                                <span class="material-symbols-outlined text-base">arrow_forward</span>
-                            </a>
-                            @if ($perlombaan->resultsAreVisible())
-                                <a href="{{ route('juri.penilaian.results', $perlombaan) }}" class="inline-flex items-center justify-center rounded-2xl border border-amber-200 bg-amber-50 px-5 py-3 text-sm font-bold text-amber-700 transition hover:bg-amber-100">
-                                    Lihat Hasil & Podium
+                            <div class="mt-8 flex flex-col gap-3">
+                                <a href="{{ route('juri.penilaian.submissions', $lomba) }}" class="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-gradient-to-r from-red-600 to-red-800 px-4 py-3 text-[11px] font-black uppercase tracking-widest text-white shadow-[0_0_15px_rgba(220,38,38,0.2)] transition-all hover:scale-105 skew-x-[-10deg]">
+                                    <span class="skew-x-[10deg]">Lihat Submission</span>
                                 </a>
-                            @endif
-                            <p class="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-center text-sm font-medium text-slate-500">
-                                Kriteria ditetapkan admin dan bisa kamu lihat di form penilaian.
-                            </p>
-                        </div>
-                    </article>
-                @empty
-                    <div class="rounded-[2rem] border border-dashed border-slate-300 bg-white p-8 text-sm text-slate-500 lg:col-span-2 xl:col-span-3">
-                        Belum ada perlombaan yang di-assign ke akun juri ini.
+                                <a href="{{ route('juri.penilaian.results', $lomba) }}" class="inline-flex w-full items-center justify-center rounded-sm border border-amber-500/50 bg-amber-900/10 px-4 py-3 text-[11px] font-black uppercase tracking-widest text-amber-400 transition-all hover:bg-amber-900/30 skew-x-[-10deg]">
+                                    <span class="skew-x-[10deg]">Lihat Hasil & Podium</span>
+                                </a>
+                            </div>
+                        </article>
+                    @endforeach
+                @else
+                    <div class="col-span-full rounded-xl border border-dashed border-neutral-800 bg-[#0a0a0c] p-12 text-center">
+                        <p class="text-sm font-black uppercase tracking-widest text-slate-500">Belum ada lomba yang ditugaskan untukmu.</p>
                     </div>
-                @endforelse
+                @endif
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            tiltCards.forEach(card => {
+                card.style.transition = 'transform 0.1s ease-out';
+                card.style.transformStyle = 'preserve-3d';
+                
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    // Rotasi diatur halus agar tidak merusak tata letak
+                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -2;
+                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 2;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.5s ease-out';
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            });
+        });
+    </script>
 </x-app-layout>

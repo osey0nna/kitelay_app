@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -27,5 +28,22 @@ class RegistrationTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect(route('dashboard', absolute: false));
+    }
+
+    public function test_new_users_can_register_with_uppercase_email_input(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Uppercase User',
+            'email' => 'UpperCase.User@Example.COM',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect(route('dashboard', absolute: false));
+        $this->assertDatabaseHas('users', [
+            'email' => 'uppercase.user@example.com',
+            'role' => User::ROLE_PENDAFTAR,
+        ]);
     }
 }

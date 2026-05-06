@@ -2,130 +2,98 @@
     <x-slot name="header">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-                <p class="text-[11px] font-black uppercase tracking-[0.28em] text-sky-600">Juri Workspace</p>
-                <h2 class="text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl">Hasil & Podium Lomba</h2>
-                <p class="mt-1 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">{{ $perlombaan->nama_lomba }}</p>
+                <p class="text-[11px] font-black uppercase tracking-[0.28em] text-sky-400">Juri Workspace</p>
+                <h2 class="text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">Hasil & Podium Lomba</h2>
+                <p class="mt-1 text-sm text-slate-300">{{ $perlombaan->nama_lomba }}</p>
             </div>
-            <a href="{{ route('juri.penilaian.submissions', $perlombaan) }}" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-slate-300 hover:text-slate-950">
+            <a href="{{ route('juri.penilaian.submissions', $perlombaan) }}" class="inline-flex items-center justify-center rounded-2xl border border-neutral-700 bg-[#0a0a0c] px-5 py-3 text-sm font-bold text-white transition hover:border-amber-400">
                 Kembali ke Submission
             </a>
         </div>
     </x-slot>
 
-    <div class="py-10">
-        <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:px-8">
-            <x-page-hero
-                eyebrow="Hasil Akhir"
-                title="Podium dan ranking final yang sudah dipublikasikan admin."
-                description="Halaman ini bersifat baca saja, supaya juri bisa ikut memantau hasil akhir setelah pengumuman resmi dibuka."
-                accent="orange"
-            >
+    <div class="bg-black py-10" x-data>
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
+            
+            <x-page-hero eyebrow="Hasil Akhir" title="Podium dan ranking final." description="Halaman ini bersifat baca saja untuk memantau hasil akhir." accent="orange">
                 <div class="flex flex-wrap gap-3">
-                    <a href="#podium" class="inline-flex items-center justify-center rounded-2xl bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800">
-                        Lihat Podium
-                    </a>
-                    <a href="#ranking" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-slate-300 hover:text-slate-950">
-                        Lihat Ranking Lengkap
-                    </a>
-                </div>
-
-                <div class="mt-4 rounded-[1.75rem] border border-white/70 bg-white/85 p-4 shadow-sm backdrop-blur">
-                    <p class="text-[11px] font-black uppercase tracking-[0.2em] text-orange-600">Catatan Juri</p>
-                    <p class="mt-3 text-base font-semibold leading-8 text-slate-700">
-                        Halaman ini hanya menampilkan hasil final yang sudah resmi dibuka admin. Juri tetap tidak mengubah podium dari sini, hanya memantau hasil akhir lomba.
-                    </p>
-                </div>
-
-                <div class="grid gap-4 sm:grid-cols-3">
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Ranking Final</p>
-                        <p class="mt-3 text-3xl font-black tabular-nums tracking-[-0.04em] text-slate-950">{{ $rankedRegistrations->count() }}</p>
-                    </div>
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Podium</p>
-                        <p class="mt-3 text-3xl font-black tabular-nums tracking-[-0.04em] text-slate-950">{{ $podium->count() }}</p>
-                    </div>
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Status</p>
-                        <p class="mt-3 text-lg font-black text-emerald-700">Sudah Dipublikasikan</p>
-                    </div>
+                    <a href="#podium" class="inline-flex items-center justify-center rounded-2xl bg-red-700 px-5 py-3 text-sm font-bold text-white hover:bg-red-600 transition-all shadow-[0_0_30px_rgba(220,38,38,0.6)]">Lihat Podium</a>
                 </div>
             </x-page-hero>
 
-            <section id="podium" class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                        <p class="text-[11px] font-black uppercase tracking-[0.28em] text-orange-500">Podium</p>
-                        <h3 class="mt-2 text-2xl font-black tracking-[-0.04em] text-slate-950 sm:text-3xl">Tiga peserta terbaik yang sudah diumumkan.</h3>
-                    </div>
-                    <p class="max-w-xl text-sm leading-7 text-slate-500">Gunakan bagian ini untuk cek cepat siapa juara 1 sampai 3 setelah hasil final dibuka oleh admin.</p>
-                </div>
+            <section id="podium" class="rounded-[2rem] border border-neutral-800 bg-[#0a0a0c] p-8 shadow-2xl">
+                <h3 class="text-2xl font-black text-white mb-8 uppercase tracking-widest">Podium Utama</h3>
+                <div class="grid gap-6 lg:grid-cols-3">
+                    @foreach ($podium as $participant)
+                        @php
+                            $colors = [
+                                1 => 'border-amber-400 bg-gradient-to-br from-amber-600/30 via-black to-black shadow-[0_0_60px_rgba(251,191,36,0.3)]',
+                                2 => 'border-slate-400 bg-gradient-to-br from-slate-600/30 via-black to-black shadow-[0_0_60px_rgba(156,163,175,0.3)]',
+                                3 => 'border-orange-700 bg-gradient-to-br from-orange-900/40 via-black to-black shadow-[0_0_60px_rgba(194,65,12,0.3)]'
+                            ];
+                            $activeClass = $colors[$loop->iteration] ?? 'border-neutral-800 bg-[#050505]';
+                        @endphp
 
-                <div class="mt-8 grid gap-5 lg:grid-cols-3">
-                    @forelse ($podium as $participant)
-                        <article class="rounded-[2rem] border p-6 shadow-sm {{ $loop->iteration === 1 ? 'border-amber-200 bg-gradient-to-br from-amber-50 via-white to-amber-100/60' : ($loop->iteration === 2 ? 'border-slate-300 bg-gradient-to-br from-slate-100 to-white' : 'border-orange-200 bg-gradient-to-br from-orange-50 to-white') }}">
-                            <div class="flex items-start justify-between gap-4">
-                                <div>
-                                    <p class="text-[11px] font-black uppercase tracking-[0.18em] {{ $loop->iteration === 1 ? 'text-amber-600' : ($loop->iteration === 2 ? 'text-slate-500' : 'text-orange-500') }}">
-                                        Juara {{ $participant->ranking_position }}
-                                    </p>
-                                    <p class="mt-3 text-xs font-black uppercase tracking-[0.18em] text-slate-400">
-                                        {{ $loop->iteration === 1 ? 'Nilai Tertinggi' : ($loop->iteration === 2 ? 'Posisi Kedua' : 'Posisi Ketiga') }}
-                                    </p>
-                                </div>
-                                <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-xl font-black text-slate-950 shadow-sm ring-1 ring-black/5">
-                                    {{ $participant->ranking_position }}
-                                </span>
-                            </div>
-                            <h4 class="mt-6 text-2xl font-black tracking-[-0.03em] text-slate-950">{{ $participant->user->name }}</h4>
-                            <p class="mt-2 text-sm leading-7 text-slate-500">{{ $participant->submission_title ?: 'Belum ada judul submission' }}</p>
-                            <div class="mt-6 rounded-[1.5rem] bg-white/90 p-4 ring-1 ring-black/5">
-                                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">Skor Final</p>
-                                <p class="mt-2 text-5xl font-black tabular-nums tracking-[-0.05em] text-slate-950">{{ number_format((float) $participant->final_score, 2) }}</p>
+                        <article class="tilt-card relative overflow-hidden rounded-[2rem] border-2 p-6 transition-all duration-300 {{ $activeClass }} hover:scale-[1.03]">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-white/40"></div>
+                            <p class="text-[11px] font-black uppercase tracking-widest mb-4 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                                Juara {{ $participant->ranking_position }}
+                            </p>
+                            <h4 class="text-3xl font-black text-white drop-shadow-md">{{ $participant->user->name }}</h4>
+                            <p class="mt-2 text-sm text-slate-200 font-bold">{{ $participant->submission_title }}</p>
+                            <div class="mt-6 p-4 rounded-xl bg-black/50 border border-white/10">
+                                <p class="text-[10px] font-black uppercase text-slate-400">Skor Final</p>
+                                <p class="text-4xl font-black text-white">{{ number_format((float) $participant->final_score, 2) }}</p>
                             </div>
                         </article>
-                    @empty
-                        <div class="rounded-[1.75rem] border border-dashed border-slate-300 bg-slate-50 p-8 text-sm text-slate-500 lg:col-span-3">
-                            Belum ada podium yang bisa ditampilkan.
-                        </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </section>
 
-            <section id="ranking" class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-                <div class="border-b border-slate-200 bg-slate-50 px-6 py-5">
-                    <p class="text-[11px] font-black uppercase tracking-[0.22em] text-sky-600">Ranking Lengkap</p>
-                    <h3 class="mt-2 text-2xl font-black tracking-[-0.04em] text-slate-950">Daftar lengkap peserta yang sudah punya skor final.</h3>
+            <section id="ranking" class="overflow-hidden rounded-[2rem] border border-neutral-800 bg-[#0a0a0c] shadow-2xl">
+                <div class="p-6 border-b border-neutral-800">
+                    <h3 class="text-xl font-black text-white">Daftar Ranking Lengkap</h3>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-slate-200 text-sm">
-                        <thead class="bg-slate-50 text-left text-[11px] font-black uppercase tracking-[0.22em] text-slate-500">
-                            <tr>
-                                <th class="px-6 py-4">Rank</th>
-                                <th class="px-6 py-4">Peserta</th>
-                                <th class="px-6 py-4">Submission</th>
-                                <th class="px-6 py-4">Nilai Akhir</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100 bg-white text-slate-700">
-                            @forelse ($rankedRegistrations as $registration)
-                                <tr>
-                                    <td class="px-6 py-5 align-top text-base font-black tabular-nums tracking-[-0.03em] text-slate-950">#{{ $registration->ranking_position }}</td>
-                                    <td class="px-6 py-5 align-top">
-                                        <p class="text-lg font-black tracking-[-0.03em] text-slate-900">{{ $registration->user->name }}</p>
+                    <table class="min-w-full divide-y divide-neutral-800">
+                        <tbody class="divide-y divide-neutral-800">
+                            @foreach ($rankedRegistrations as $registration)
+                                @php
+                                    $rowHighlight = '';
+                                    if ($registration->ranking_position == 1) $rowHighlight = 'bg-gradient-to-r from-amber-500/20 to-transparent border-l-4 border-amber-400 shadow-[inset_10px_0_20px_-10px_rgba(251,191,36,0.5)]';
+                                    elseif ($registration->ranking_position == 2) $rowHighlight = 'bg-gradient-to-r from-slate-400/20 to-transparent border-l-4 border-slate-300 shadow-[inset_10px_0_20px_-10px_rgba(156,163,175,0.5)]';
+                                    elseif ($registration->ranking_position == 3) $rowHighlight = 'bg-gradient-to-r from-orange-700/20 to-transparent border-l-4 border-orange-500 shadow-[inset_10px_0_20px_-10px_rgba(194,65,12,0.5)]';
+                                @endphp
+                                <tr class="tilt-row group transition-all hover:bg-neutral-900/80 {{ $rowHighlight }}">
+                                    <td class="px-6 py-5 font-black text-white transition-all">#{{ $registration->ranking_position }}</td>
+                                    <td class="px-6 py-5 font-bold text-white">
+                                        {{ $registration->user->name }}
+                                        @if($registration->ranking_position <= 3)
+                                            <span class="ml-2 text-[10px] font-black uppercase px-2 py-0.5 rounded-full {{ $registration->ranking_position == 1 ? 'bg-amber-400 text-black' : ($registration->ranking_position == 2 ? 'bg-slate-300 text-black' : 'bg-orange-500 text-white') }}">Top {{ $registration->ranking_position }}</span>
+                                        @endif
                                     </td>
-                                    <td class="px-6 py-5 align-top text-sm leading-7 text-slate-500">{{ $registration->submission_title ?: 'Belum ada judul submission' }}</td>
-                                    <td class="px-6 py-5 align-top text-base font-black tabular-nums tracking-[-0.03em] text-slate-900">{{ number_format((float) $registration->final_score, 2) }}</td>
+                                    <td class="px-6 py-5 text-slate-200 font-medium">{{ $registration->submission_title }}</td>
+                                    <td class="px-6 py-5 font-black text-amber-400 text-lg">{{ number_format((float) $registration->final_score, 2) }}</td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="4" class="px-6 py-12 text-center text-sm text-slate-500">Belum ada ranking final yang tersedia.</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </section>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.tilt-card, .tilt-row').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                el.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${y * -5}deg) scale(1.01)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)`;
+            });
+        });
+    </script>
 </x-app-layout>

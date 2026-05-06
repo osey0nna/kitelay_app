@@ -51,6 +51,7 @@ Route::get('/syarat-ketentuan', function () {
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserManagementController::class)->except('show');
     Route::resource('perlombaan', PerlombaanController::class)->except('show');
+    Route::get('hasil', [HasilPerlombaanController::class, 'index'])->name('hasil.index');
     Route::resource('perlombaan.kriteria', KriteriaController::class)
         ->parameters(['kriteria' => 'kriteria'])
         ->except('show');

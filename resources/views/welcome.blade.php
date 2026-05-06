@@ -3,46 +3,50 @@
 @section('title', 'Kompetisi Kreatif SMK 2026')
 
 @section('content')
-<section id="beranda" class="relative overflow-hidden bg-white pt-24 pb-20 scroll-mt-28">
-    <div class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+<section id="beranda" class="relative overflow-hidden bg-black pt-24 pb-20 scroll-mt-28 border-b border-red-900/30 text-white">
+    
+    <div id="cursor-glow" class="absolute w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0 z-0"></div>
+
+    <div class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-16 relative z-10">
         <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
 
             <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-[12px] font-semibold text-slate-700">
-                    <span class="material-symbols-outlined text-[16px] text-[#1e2460]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                <div class="inline-flex items-center gap-2 rounded-none border-l-4 border-amber-400 bg-gradient-to-r from-red-900/40 to-black px-4 py-2 text-[12px] font-black uppercase tracking-widest text-white backdrop-blur-sm">
+                    <span class="material-symbols-outlined text-[16px] text-amber-400" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
                     Kompetisi Kreatif SMK 2026
                 </div>
 
                 <div class="space-y-6">
-                    <h1 class="max-w-4xl text-[40px] font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-[52px] lg:text-[60px]">
+                    <h1 class="max-w-4xl text-[40px] font-black leading-[1.1] tracking-tight text-white sm:text-[52px] lg:text-[60px] uppercase">
                         Wujudkan ide kreatifmu,
-                        <span class="bg-gradient-to-r from-[#1e2460] to-indigo-600 bg-clip-text text-transparent">
-                        jadikan prestasi nyata.
+                        <span class="block bg-gradient-to-r from-red-500 via-red-600 to-amber-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(251,191,36,0.3)] mt-2">
+                            jadikan prestasi nyata.
                         </span>
                     </h1>
-                    <p class="max-w-xl text-[17px] leading-relaxed text-slate-500">
+                    <p class="max-w-xl text-[16px] font-medium leading-relaxed text-white/90">
                         Kitelay membantu peserta mendaftar lomba dan upload karya, juri memberi penilaian berbobot, dan admin memantau ranking serta podium dalam satu platform terpusat.
                     </p>
                 </div>
 
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                    <a href="{{ route('register') }}" class="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#1e2460] px-8 py-3.5 text-[15px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#141842] shadow-lg shadow-indigo-900/20">
-                        Ikuti Lomba
-                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                    <a href="{{ route('register') }}" class="group relative inline-flex h-13 items-center justify-center bg-gradient-to-br from-red-600 to-red-800 px-8 py-3.5 transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] border border-transparent hover:border-amber-400 skew-x-[-12deg]">
+                        <div class="flex items-center gap-2 skew-x-[12deg] text-[15px] font-black uppercase tracking-widest text-white">
+                            Ikuti Lomba
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </div>
                     </a>
-                    <a href="{{ route('login') }}" class="inline-flex h-13 items-center justify-center rounded-full border border-slate-200 bg-white px-8 py-3.5 text-[15px] font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50">
-                        Login Dashboard
+                    <a href="{{ route('login') }}" class="group relative inline-flex h-13 items-center justify-center border border-white/20 bg-black/50 px-8 py-3.5 transition-all duration-300 hover:border-amber-400 hover:bg-amber-400/10 backdrop-blur-sm skew-x-[-12deg]">
+                        <span class="skew-x-[12deg] text-[15px] font-bold uppercase tracking-widest text-white">
+                            Login Dashboard
+                        </span>
                     </a>
                 </div>
             </div>
 
             <div class="relative flex justify-center lg:justify-end">
-                <div class="absolute -inset-10 rounded-full bg-gradient-to-br from-indigo-50 to-slate-100 blur-3xl opacity-80"></div>
-
-                <div class="relative z-10 w-full max-w-xl rounded-[2.5rem] bg-white p-3 sm:p-5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] ring-1 ring-slate-100">
-                    <img src="{{ asset('assets/images/hero_image3.jpg') }}"
-                         alt="Ilustrasi Platform Kitelay"
-                         class="h-auto w-full rounded-[1.75rem] object-cover">
+                <div class="absolute -inset-10 rounded-full bg-red-700/20 blur-[100px] opacity-80 pointer-events-none"></div>
+                <div class="relative z-10 w-full max-w-xl bg-[#0a0a0c] p-3 sm:p-5 shadow-[0_0_40px_rgba(220,38,38,0.2)] ring-1 ring-red-900/50 hover:ring-amber-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(251,191,36,0.2)] rounded-tl-3xl rounded-br-3xl">
+                    <img src="{{ asset('assets/images/hero_image3.jpg') }}" alt="Ilustrasi Platform Kitelay" class="h-auto w-full object-cover transition-opacity rounded-tl-[1.25rem] rounded-br-[1.25rem] filter grayscale hover:grayscale-0">
                 </div>
             </div>
 
@@ -50,102 +54,71 @@
     </div>
 </section>
 
-<section id="fitur" class="bg-slate-50 py-20 sm:py-28 scroll-mt-24">
+<section id="fitur" class="bg-[#050505] py-20 sm:py-28 scroll-mt-24 border-y border-red-900/30 text-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[32px] font-bold tracking-tight text-slate-900 sm:text-[40px]">
-                Semua kebutuhan kompetisi digital dirangkum dalam satu platform.
+            <h2 class="text-[32px] font-black uppercase tracking-tight text-white sm:text-[40px]">
+                Kebutuhan Kompetisi <span class="text-amber-400">Satu Platform</span>
             </h2>
-            <p class="mt-5 text-[17px] text-slate-500">Sistem terintegrasi yang nyaman digunakan di berbagai ukuran layar.</p>
+            <p class="mt-5 text-[16px] text-white/80 font-medium">Sistem terintegrasi yang nyaman digunakan di berbagai ukuran layar dengan performa maksimal.</p>
         </div>
 
         <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div class="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-md hover:-translate-y-1">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-[#1e2460]">
-                    <span class="material-symbols-outlined">fact_check</span>
-                </div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Pendaftaran Cepat</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Peserta bisa memilih lomba dan mendaftar tanpa alur yang membingungkan.</p>
+            @foreach(['Daftar Cepat', 'Submit Mudah', 'Penilaian Jelas', 'Hasil Transparan'] as $fitur)
+            <div class="bg-[#0a0a0c] p-8 shadow-lg border border-neutral-800 transition-all duration-300 hover:border-amber-500/70 hover:shadow-[0_0_30px_rgba(251,191,36,0.15)] hover:-translate-y-2 group rounded-tl-2xl rounded-br-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 transition-all duration-300 group-hover:bg-amber-400"></div>
+                <h3 class="mt-8 text-[18px] font-black uppercase tracking-wide text-white">{{ $fitur }}</h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-white/80 font-medium">Sistem terintegrasi untuk memudahkan segala alur kompetisi Anda.</p>
             </div>
-            <div class="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-md hover:-translate-y-1">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-[#1e2460]">
-                    <span class="material-symbols-outlined">upload_file</span>
-                </div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Submission Mudah</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Upload karya dan edit submission sudah nyaman digunakan di HP maupun laptop.</p>
-            </div>
-            <div class="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-md hover:-translate-y-1">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-[#1e2460]">
-                    <span class="material-symbols-outlined">analytics</span>
-                </div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Penilaian Jelas</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Juri menilai berdasarkan kriteria berbobot dan skor akhir bisa dirata-ratakan.</p>
-            </div>
-            <div class="rounded-3xl bg-white p-8 shadow-sm transition hover:shadow-md hover:-translate-y-1">
-                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-[#1e2460]">
-                    <span class="material-symbols-outlined">workspace_premium</span>
-                </div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Hasil Transparan</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Ranking dan podium dipantau dengan tampilan yang jauh lebih bersih.</p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
 
-<section id="alur" class="bg-white py-20 sm:py-28 scroll-mt-24">
+<section id="alur" class="bg-black py-20 sm:py-28 scroll-mt-24 text-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
-            <h2 class="text-[32px] font-bold tracking-tight text-slate-900 sm:text-[40px]">
-                Alur Sistem
-            </h2>
-            <p class="mt-5 text-[17px] text-slate-500">Dari pendaftaran sampai podium, tiap tahap dibuat lebih intuitif dan rapi.</p>
+            <h2 class="text-[32px] font-black uppercase tracking-tight text-white sm:text-[40px]">Alur <span class="text-amber-400">Sistem</span></h2>
         </div>
-
-        <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            <div class="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center transition hover:bg-white hover:shadow-md hover:-translate-y-1">
-                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-xl font-bold text-[#1e2460] shadow-sm">1</div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Daftar Akun</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Peserta membuat akun dan memilih lomba yang tersedia.</p>
-            </div>
-            <div class="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center transition hover:bg-white hover:shadow-md hover:-translate-y-1">
-                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-xl font-bold text-[#1e2460] shadow-sm">2</div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Kirim Karya</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Submission dikumpulkan langsung melalui dashboard peserta.</p>
-            </div>
-            <div class="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center transition hover:bg-white hover:shadow-md hover:-translate-y-1">
-                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-xl font-bold text-[#1e2460] shadow-sm">3</div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Penilaian Juri</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Juri memberi skor per kriteria dengan bobot yang telah disesuaikan.</p>
-            </div>
-            <div class="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center transition hover:bg-white hover:shadow-md hover:-translate-y-1">
-                <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-xl font-bold text-[#1e2460] shadow-sm">4</div>
-                <h3 class="mt-6 text-[18px] font-semibold text-slate-900">Pengumuman</h3>
-                <p class="mt-3 text-[15px] leading-relaxed text-slate-500">Admin dan peserta dapat melihat ranking serta pemenang lomba secara transparan.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="mulai" class="bg-white py-12 pb-24 scroll-mt-24">
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div class="rounded-[2.5rem] bg-[#1e2460] px-6 py-16 text-center shadow-2xl shadow-indigo-900/15 sm:px-12 sm:py-20 relative overflow-hidden">
-            <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-white/5 blur-2xl"></div>
-            <div class="absolute -right-10 bottom-0 h-40 w-40 rounded-full bg-white/5 blur-2xl"></div>
-
-            <div class="relative z-10">
-                <h2 class="text-[32px] font-bold tracking-tight text-white sm:text-[40px]">
-                    Siap menunjukkan bakat terbaikmu?
-                </h2>
-                <p class="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-indigo-100">
-                    Daftar sekarang, ikuti kompetisi yang sedang dibuka, dan pantau perjalanan prestasimu sampai ke podium.
-                </p>
-                <div class="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-                    <a href="{{ route('register') }}" class="inline-flex h-13 items-center justify-center rounded-full bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1e2460] transition hover:bg-slate-100">
-                        Daftar Sekarang
-                    </a>
+        <div class="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4 relative text-white">
+             @for($i=1; $i<=4; $i++)
+             <div class="relative z-10 border border-neutral-800 bg-[#0a0a0c] p-8 text-center transition-all duration-300 hover:border-amber-500/70 group skew-x-[-5deg]">
+                <div class="skew-x-[5deg]">
+                    <h3 class="mt-8 text-[18px] font-black uppercase tracking-wide text-white">Tahap {{ $i }}</h3>
+                    <p class="mt-3 text-[14px] leading-relaxed text-white/80">Penjelasan alur kerja sistem tahap {{ $i }}.</p>
                 </div>
             </div>
+             @endfor
         </div>
     </div>
 </section>
+
+<section id="mulai" class="bg-[#050505] py-12 pb-24 border-t border-red-900/30 text-white">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative">
+        <div class="bg-gradient-to-br from-[#0a0a0c] via-[#110505] to-[#050505] border border-amber-500/30 px-6 py-16 text-center shadow-[0_0_50px_rgba(251,191,36,0.15)] sm:px-12 sm:py-20 relative overflow-hidden group transition-all duration-700 skew-x-[-3deg] ring-1 ring-white/5 z-10">
+            <h2 class="text-[32px] font-black uppercase tracking-tight text-white sm:text-[40px]">Siap Menjadi <span class="text-amber-400">Juara?</span></h2>
+            <p class="mx-auto mt-5 max-w-2xl text-[16px] leading-relaxed text-white/80 font-medium">Daftar sekarang dan mulailah perjalanan prestasimu.</p>
+            <div class="mt-10">
+                <a href="{{ route('register') }}" class="inline-flex h-13 items-center justify-center bg-gradient-to-r from-amber-500 to-orange-600 px-10 py-4 text-[15px] font-black uppercase tracking-widest text-black transition-all hover:scale-110 skew-x-[-12deg]">
+                    <span class="skew-x-[12deg]">Daftar Sekarang</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Script animasi glow tetap terjaga
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroArea = document.getElementById('beranda');
+        const glow = document.getElementById('cursor-glow');
+        heroArea.addEventListener('mousemove', (e) => {
+            const rect = heroArea.getBoundingClientRect();
+            glow.style.left = `${e.clientX - rect.left}px`;
+            glow.style.top = `${e.clientY - rect.top}px`;
+        });
+        heroArea.addEventListener('mouseenter', () => glow.classList.replace('opacity-0', 'opacity-100'));
+        heroArea.addEventListener('mouseleave', () => glow.classList.replace('opacity-100', 'opacity-0'));
+    });
+</script>
 @endsection

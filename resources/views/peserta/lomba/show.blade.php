@@ -1,150 +1,114 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-                <p class="text-[11px] font-black uppercase tracking-[0.28em] text-sky-600">Peserta Dashboard</p>
-                <h2 class="text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl">Detail Lomba</h2>
-                <p class="max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">{{ $perlombaan->nama_lomba }}</p>
+        <div class="flex flex-col gap-2 relative z-10">
+            <div class="inline-flex items-center gap-2 rounded-sm border-l-4 border-amber-400 bg-gradient-to-r from-red-900/40 to-[#0a0a0c] px-4 py-2 w-fit shadow-[0_0_15px_rgba(251,191,36,0.1)]">
+                <span class="material-symbols-outlined text-[16px] text-amber-400">info</span>
+                <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Persiapan Peserta</span>
             </div>
-            <a href="{{ route('peserta.lomba.index') }}" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-slate-300 hover:text-slate-950">
-                Kembali ke Katalog
-            </a>
+            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+                Detail <span class="text-amber-400">Lomba</span>
+            </h2>
+            <p class="text-sm font-medium text-slate-400">{{ $perlombaan->nama_lomba }}</p>
         </div>
     </x-slot>
 
-    <div class="py-10">
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
-            <x-page-hero
-                eyebrow="Persiapan Peserta"
-                :title="$perlombaan->nama_lomba"
-                description="Baca detail lomba dan rundown lengkap di halaman ini terlebih dahulu. Setelah itu baru lanjutkan pendaftaran agar alurnya lebih jelas dan terstruktur."
-                accent="orange"
-            >
-                <div class="grid gap-4 sm:grid-cols-3">
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Status</p>
-                        <p class="mt-3 text-xl font-black tracking-[-0.04em] text-slate-950">{{ str($perlombaan->status)->replace('_', ' ')->title() }}</p>
+    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+        
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <section class="tilt-card rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-md rounded-bl-md border border-red-900/50 bg-[#0a0a0c] p-8 shadow-xl relative overflow-hidden transition-all duration-700 ease-out"
+                     :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                <div class="absolute top-0 left-0 w-2 h-full bg-red-600"></div>
+                <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+                    <div>
+                        <h1 class="text-3xl font-black uppercase tracking-wide text-white sm:text-4xl leading-tight">{{ $perlombaan->nama_lomba }}</h1>
+                        <p class="mt-4 text-[14px] font-medium leading-relaxed text-slate-400 max-w-2xl">
+                            Baca detail lomba dan rundown lengkap di halaman ini terlebih dahulu. Setelah itu baru lanjutkan pendaftaran agar alurnya lebih jelas dan terstruktur.
+                        </p>
                     </div>
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Kriteria</p>
-                        <p class="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">{{ $perlombaan->kriterias_count }}</p>
-                    </div>
-                    <div class="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-sm backdrop-blur">
-                        <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Sisa Kuota</p>
-                        <p class="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">{{ $participantsRemaining ?? 'Unlimited' }}</p>
+
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="rounded-xl border border-neutral-800 bg-black p-4 text-center">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">Status</p>
+                            <p class="mt-2 text-md font-black text-white">{{ str($perlombaan->status)->replace('_', ' ')->title() }}</p>
+                        </div>
+                        <div class="rounded-xl border border-neutral-800 bg-black p-4 text-center">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">Kriteria</p>
+                            <p class="mt-2 text-xl font-black text-amber-400">{{ $perlombaan->kriterias_count }}</p>
+                        </div>
+                        <div class="rounded-xl border border-neutral-800 bg-black p-4 text-center">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-500">Sisa Kuota</p>
+                            <p class="mt-2 text-xl font-black text-red-500">{{ $participantsRemaining ?? '∞' }}</p>
+                        </div>
                     </div>
                 </div>
-            </x-page-hero>
+            </section>
 
-            <section class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-                <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                    <p class="text-[11px] font-black uppercase tracking-[0.28em] text-sky-600">Tentang Lomba</p>
-                    <h3 class="mt-3 text-2xl font-black tracking-[-0.04em] text-slate-950 sm:text-3xl">Peserta perlu membaca detail ini sebelum mendaftar.</h3>
-                    <p class="mt-5 text-sm leading-8 text-slate-600 sm:text-base">{{ $perlombaan->deskripsi }}</p>
-
-                    <div class="mt-8 grid gap-4 sm:grid-cols-2">
-                        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
-                            <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Juri Terlibat</p>
-                            <p class="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">{{ $perlombaan->juris_count }}</p>
-                            <p class="mt-3 text-sm leading-7 text-slate-500">{{ $perlombaan->juris->pluck('name')->join(', ') ?: 'Belum ada juri yang di-assign.' }}</p>
-                        </div>
-                        <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
-                            <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Peserta Terdaftar</p>
-                            <p class="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-950">{{ $perlombaan->pendaftarans_count }}</p>
-                            <p class="mt-3 text-sm leading-7 text-slate-500">Pantau kapasitas lomba dan pastikan kamu mendaftar sebelum kuota penuh.</p>
-                        </div>
-                    </div>
+            <section class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] transition-all duration-700 delay-150 ease-out"
+                     :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                
+                <article class="tilt-card rounded-tl-2xl rounded-br-2xl border border-neutral-800 bg-[#0a0a0c] p-8 shadow-lg hover:border-neutral-700 transition-colors">
+                    <p class="text-[11px] font-black uppercase tracking-widest text-amber-500 border-b border-red-900/30 pb-3 w-fit">Tentang Lomba</p>
+                    <h3 class="mt-4 text-2xl font-black uppercase tracking-wide text-white">Detail Informasi.</h3>
+                    <p class="mt-5 text-[14px] leading-8 text-slate-400">{{ $perlombaan->deskripsi }}</p>
                 </article>
 
-                <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                    <p class="text-[11px] font-black uppercase tracking-[0.28em] text-orange-500">Aksi Peserta</p>
-                    <h3 class="mt-3 text-2xl font-black tracking-[-0.04em] text-slate-950 sm:text-3xl">Setelah membaca detail, baru lanjut daftar.</h3>
-
-                    <div class="mt-6 space-y-4">
+                <article class="tilt-card rounded-tl-2xl rounded-br-2xl border border-neutral-800 bg-[#0a0a0c] p-8 shadow-lg relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-red-600/10 rounded-full blur-[30px]"></div>
+                    <p class="text-[11px] font-black uppercase tracking-widest text-red-500 border-b border-red-900/30 pb-3 w-fit relative z-10">Aksi Peserta</p>
+                    <h3 class="mt-4 text-2xl font-black uppercase tracking-wide text-white relative z-10">Siap Bertanding?</h3>
+                    <div class="mt-6 space-y-4 relative z-10">
                         @if ($existingRegistration)
-                            <div class="rounded-[1.5rem] border border-emerald-200 bg-emerald-50 p-5">
-                                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-emerald-700">Status Pendaftaran</p>
-                                <p class="mt-3 text-xl font-black tracking-[-0.03em] text-emerald-800">Kamu sudah terdaftar di lomba ini.</p>
-                                <p class="mt-3 text-sm leading-7 text-emerald-700">Lanjutkan ke submission kalau sudah siap mengunggah karya.</p>
+                            <div class="rounded-xl border border-emerald-900/50 bg-emerald-900/10 p-5">
+                                <p class="text-[10px] font-black uppercase tracking-widest text-emerald-500">Status Pendaftaran</p>
+                                <p class="mt-2 text-lg font-black text-white">Kamu sudah terdaftar.</p>
                             </div>
-
-                            <a href="{{ route('peserta.lomba.edit', $existingRegistration) }}" class="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800">
-                                {{ $existingRegistration->submitted_at ? 'Edit Submission' : 'Isi Submission' }}
+                            <a href="{{ route('peserta.lomba.edit', $existingRegistration) }}" class="inline-flex w-full items-center justify-center rounded-sm bg-gradient-to-r from-red-600 to-red-800 px-5 py-3.5 text-[12px] font-black uppercase tracking-widest text-white shadow-[0_0_15px_rgba(220,38,38,0.3)] hover:scale-105 border border-transparent hover:border-amber-400 skew-x-[-10deg] transition-all">
+                                <span class="skew-x-[10deg]">{{ $existingRegistration->submitted_at ? 'Edit Submission' : 'Isi Submission' }}</span>
                             </a>
                         @else
-                            <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
-                                <p class="text-[11px] font-black uppercase tracking-[0.18em] text-slate-500">Checklist Singkat</p>
-                                <ul class="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                                    <li>Pastikan kamu sudah membaca deskripsi dan tujuan lomba.</li>
-                                    <li>Cek semua bobot penilaian agar submission lebih terarah.</li>
-                                    <li>Perhatikan rundown dan tanggal penting sebelum mendaftar.</li>
-                                </ul>
-                            </div>
-
                             <form method="POST" action="{{ route('peserta.lomba.register', $perlombaan) }}">
                                 @csrf
-                                <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800">
-                                    Daftar Lomba Ini
+                                <button type="submit" class="inline-flex w-full items-center justify-center rounded-sm bg-gradient-to-r from-red-600 to-red-800 px-5 py-3.5 text-[12px] font-black uppercase tracking-widest text-white shadow-[0_0_15px_rgba(220,38,38,0.3)] hover:scale-105 border border-transparent hover:border-amber-400 skew-x-[-10deg] transition-all">
+                                    <span class="skew-x-[10deg]">Daftar Lomba Ini</span>
                                 </button>
                             </form>
                         @endif
                     </div>
                 </article>
             </section>
-
-            <section class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-                <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                    <p class="text-[11px] font-black uppercase tracking-[0.28em] text-sky-600">Kriteria Penilaian</p>
-                    <h3 class="mt-3 text-2xl font-black tracking-[-0.04em] text-slate-950 sm:text-3xl">Fokus nilai yang akan dilihat juri.</h3>
-
-                    <div class="mt-6 space-y-4">
-                        @forelse ($perlombaan->kriterias as $kriteria)
-                            <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
-                                <div class="flex items-start justify-between gap-4">
-                                    <div>
-                                        <p class="text-lg font-black tracking-[-0.03em] text-slate-950">{{ $kriteria->nama_kriteria }}</p>
-                                        <p class="mt-2 text-sm leading-7 text-slate-600">{{ $kriteria->deskripsi ?: 'Tidak ada deskripsi tambahan.' }}</p>
-                                    </div>
-                                    <span class="inline-flex rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-slate-700 ring-1 ring-slate-200">
-                                        Bobot {{ $kriteria->bobot }}
-                                    </span>
-                                </div>
-                            </div>
-                        @empty
-                            <div class="rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 p-6 text-sm text-slate-500">
-                                Kriteria lomba belum disiapkan admin.
-                            </div>
-                        @endforelse
-                    </div>
-                </article>
-
-                <article class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-                    <p class="text-[11px] font-black uppercase tracking-[0.28em] text-orange-500">Rundown Lomba</p>
-                    <h3 class="mt-3 text-2xl font-black tracking-[-0.04em] text-slate-950 sm:text-3xl">Urutan jadwal penting yang perlu kamu pantau.</h3>
-
-                    <div class="mt-8 space-y-5">
-                        @forelse ($rundown as $index => $item)
-                            <div class="flex gap-4">
-                                <div class="flex flex-col items-center">
-                                    <span class="flex h-11 w-11 items-center justify-center rounded-full bg-slate-950 text-sm font-black text-white">{{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}</span>
-                                    @if (! $loop->last)
-                                        <span class="mt-2 h-full w-px bg-slate-200"></span>
-                                    @endif
-                                </div>
-                                <div class="pb-5">
-                                    <p class="text-lg font-black tracking-[-0.03em] text-slate-950">{{ $item['label'] }}</p>
-                                    <p class="mt-2 text-sm font-semibold text-sky-700">{{ $item['datetime']->translatedFormat('d M Y H:i') }}</p>
-                                    <p class="mt-2 text-sm leading-7 text-slate-600">{{ $item['description'] }}</p>
-                                </div>
-                            </div>
-                        @empty
-                            <div class="rounded-[1.5rem] border border-dashed border-slate-300 bg-slate-50 p-6 text-sm text-slate-500">
-                                Rundown belum tersedia untuk lomba ini.
-                            </div>
-                        @endforelse
-                    </div>
-                </article>
-            </section>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tiltCards = document.querySelectorAll('.tilt-card');
+
+            tiltCards.forEach(card => {
+                card.style.transition = 'transform 0.1s ease-out';
+                card.style.transformStyle = 'preserve-3d';
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -5; 
+                    const rotateY = ((x - centerX) / centerX) * 5;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.5s ease-out';
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            });
+        });
+    </script>
 </x-app-layout>

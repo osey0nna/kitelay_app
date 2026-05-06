@@ -19,6 +19,25 @@
       .vibrant-gradient-bg { background: radial-gradient(circle at 10% 20%, rgba(0, 6, 102, 0.05) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(56, 11, 0, 0.05) 0%, transparent 50%); }
       .hero-glow { filter: drop-shadow(0 0 20px rgba(0, 6, 102, 0.3)); }
       body { min-height: max(884px, 100dvh); }
+      body,
+      body h1,
+      body h2,
+      body h3,
+      body h4,
+      body h5,
+      body h6,
+      body p,
+      body a,
+      body span,
+      body li,
+      body label,
+      body strong,
+      body small {
+        color: #ffffff !important;
+      }
+      body .text-transparent {
+        color: transparent !important;
+      }
     </style>
 </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary-fixed-dim selection:text-primary">
