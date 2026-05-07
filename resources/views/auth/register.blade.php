@@ -62,7 +62,7 @@
             <x-input-error :messages="$errors->get('email')" class="text-xs font-bold text-red-400" />
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+        <div class="grid gap-4 md:grid-cols-2">
             <div class="space-y-2">
                 <label for="password" class="block text-[11px] font-black uppercase tracking-[0.32em] text-slate-400">Password</label>
                 <div class="group relative">

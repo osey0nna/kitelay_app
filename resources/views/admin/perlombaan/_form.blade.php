@@ -24,7 +24,7 @@
         @enderror
     </div>
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div>
             <label for="status" class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">
                 Status Pendaftaran
@@ -61,12 +61,12 @@
     </div>
 </div>
 
-<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-neutral-800 pt-8">
+<div class="mt-6 md:mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-t border-neutral-800 pt-6 md:pt-8">
     <p class="text-[11px] font-medium leading-relaxed text-slate-500 max-w-sm">
         Pastikan detail perlombaan sudah benar. Penugasan juri dan input kriteria nilai dapat dilakukan setelah lomba ini disimpan.
     </p>
     
-    <div class="flex flex-col sm:flex-row gap-3">
+    <div class="flex flex-col md:flex-row gap-3">
         <a href="{{ route('admin.perlombaan.index') }}" class="inline-flex items-center justify-center rounded-sm border border-neutral-700 bg-transparent px-6 py-3 text-[11px] font-black uppercase tracking-widest text-slate-300 hover:border-slate-500 hover:text-white transition-all skew-x-[-10deg]">
             <span class="skew-x-[10deg]">Batal & Kembali</span>
         </a>

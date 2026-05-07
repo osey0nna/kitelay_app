@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between relative z-10">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between relative z-10">
             <div class="flex flex-col gap-2">
                 <div class="inline-flex items-center gap-2 rounded-sm border-l-4 border-emerald-400 bg-gradient-to-r from-emerald-900/40 to-[#0a0a0c] px-4 py-2 w-fit shadow-[0_0_15px_rgba(16,185,129,0.1)]">
                     <span class="material-symbols-outlined text-[16px] text-emerald-400">emoji_events</span>

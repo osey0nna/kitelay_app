@@ -7,9 +7,9 @@
         </div>
     </x-slot>
 
-    <div class="bg-black py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('juri.kriteria.update', [$perlombaan, $kriteria]) }}" class="rounded-[2rem] border border-neutral-800 bg-[#0a0a0c] p-6 shadow-2xl sm:p-8">
+    <div class="bg-black py-6 md:py-10">
+        <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <form method="POST" action="{{ route('juri.kriteria.update', [$perlombaan, $kriteria]) }}" class="rounded-[2rem] border border-neutral-800 bg-[#0a0a0c] p-6 shadow-2xl md:p-8">
                 @csrf
                 @method('PUT')
 

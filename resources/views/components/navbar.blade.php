@@ -105,7 +105,7 @@
                         <span class="material-symbols-outlined text-base transition-transform duration-300" :class="{ 'rotate-180 text-red-500': mobileExploreOpen }">expand_more</span>
                     </button>
 
-                    <div x-show="mobileExploreOpen" x-collapse x-transition.duration.300ms class="space-y-1 border-l-2 border-red-900/50 ml-4 mt-1">
+                    <div x-show="mobileExploreOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="space-y-1 border-l-2 border-red-900/50 ml-4 mt-1">
                         <a @click="open = false; mobileExploreOpen = false" class="block rounded-r-lg px-4 py-2 text-[14px] font-medium text-slate-400 transition-all hover:text-red-400 hover:bg-red-900/20" href="{{ route('explore.index') }}">Lomba</a>
                         <a @click="open = false; mobileExploreOpen = false" class="block rounded-r-lg px-4 py-2 text-[14px] font-medium text-slate-400 transition-all hover:text-red-400 hover:bg-red-900/20" href="{{ route('pengumuman.index') }}">Pengumuman</a>
                     </div>

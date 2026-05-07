@@ -6,10 +6,10 @@
                     <span class="material-symbols-outlined text-[16px] text-violet-400">leaderboard</span>
                     <span class="text-[11px] font-black uppercase tracking-widest text-violet-400">Admin Panel</span>
                 </div>
-                <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                     Hasil <span class="text-violet-400">Perlombaan</span>
                 </h2>
-                <p class="max-w-2xl text-sm font-medium leading-7 text-slate-400">
+                <p class="max-w-2xl text-xs md:text-sm font-medium leading-7 text-slate-400">
                     Pilih lomba terlebih dulu untuk memantau data podium dan ranking.
                 </p>
             </div>
@@ -19,10 +19,10 @@
         </div>
     </x-slot>
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out" :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out" :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
 
             <section class="rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-sm rounded-bl-sm border border-violet-900/50 bg-[#0a0a0c] p-8 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-violet-400 to-violet-700"></div>

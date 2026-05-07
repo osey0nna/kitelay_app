@@ -9,7 +9,7 @@
     
     <div id="cursor-glow" class="absolute w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500 opacity-0 z-0"></div>
 
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mx-auto max-w-6xl px-4 md:px-6 lg:px-8 relative z-10">
         <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-3xl">
                 <div class="inline-flex items-center gap-2 rounded-none border-l-4 border-amber-400 bg-gradient-to-r from-red-900/40 to-black px-4 py-2 text-[12px] font-black uppercase tracking-widest text-amber-400 backdrop-blur-sm shadow-[0_0_15px_rgba(251,191,36,0.1)]">
@@ -37,7 +37,7 @@
         </div>
 
         @if ($podium->isNotEmpty())
-            <div class="mt-16 grid gap-6 lg:grid-cols-3">
+            <div class="mt-12 md:mt-16 grid gap-6 md:gap-8 lg:grid-cols-3">
                 @foreach ($podium as $participant)
                     @php
                         // Logika Tema Warna Spesifik untuk Juara 1 (Emas), 2 (Perak), 3 (Perunggu)

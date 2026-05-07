@@ -34,11 +34,11 @@
             <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
         </div>
 
-        <main class="relative z-10 flex min-h-screen w-full items-start justify-center px-4 py-8 sm:items-center sm:px-6 sm:py-10 lg:px-8">
+        <main class="relative z-10 flex min-h-screen w-full items-start justify-center px-4 py-6 md:items-center md:px-6 md:py-10 lg:px-8">
             <div class="w-full max-w-[29rem] [perspective:1800px]">
                 <div
                     id="tilt-card"
-                    class="relative overflow-hidden rounded-[30px] border border-red-900/40 bg-gradient-to-br from-[#121214] via-[#0b0b0e] to-black p-6 shadow-[0_24px_80px_rgba(0,0,0,0.55)] ring-1 ring-white/5 transition-[transform,box-shadow,border-color] duration-300 ease-out will-change-transform [transform-style:preserve-3d] sm:p-8"
+                    class="relative overflow-hidden rounded-[30px] border border-red-900/40 bg-gradient-to-br from-[#121214] via-[#0b0b0e] to-black p-6 shadow-[0_24px_80px_rgba(0,0,0,0.55)] ring-1 ring-white/5 transition-[transform,box-shadow,border-color] duration-300 ease-out will-change-transform [transform-style:preserve-3d] md:p-8"
                     style="--glow-x: 50%; --glow-y: 22%; --card-shine: 0.72;"
                 >
                     <div

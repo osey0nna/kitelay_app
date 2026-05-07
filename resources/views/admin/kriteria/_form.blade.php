@@ -17,7 +17,7 @@
     </div>
 
     <div class="space-y-5 rounded-[1.75rem] border border-neutral-800 bg-neutral-900 p-6 shadow-sm">
-        <div class="grid gap-5 sm:grid-cols-2">
+        <div class="grid gap-5 md:grid-cols-2">
             <div>
                 <x-input-label for="bobot" value="Bobot" class="text-white" />
                 <x-text-input id="bobot" name="bobot" type="number" min="1" max="100" 
@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+<div class="mt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
     <a href="{{ route('admin.perlombaan.kriteria.index', $perlombaan) }}" 
         class="inline-flex items-center justify-center rounded-2xl border border-neutral-700 bg-neutral-900 px-5 py-3 text-sm font-bold text-white transition hover:border-neutral-500">
         Kembali

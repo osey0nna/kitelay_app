@@ -6,18 +6,18 @@
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Admin Control Center</span>
             </div>
             
-            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                 Tambah <span class="text-amber-400">Perlombaan</span>
             </h2>
-            <p class="text-sm font-medium text-slate-400">Susun fondasi lomba baru, lalu lanjutkan dengan kriteria dan penugasan juri.</p>
+            <p class="text-xs md:text-sm font-medium text-slate-400">Susun fondasi lomba baru, lalu lanjutkan dengan kriteria dan penugasan juri.</p>
         </div>
     </x-slot>
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
         
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
+        <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
              :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
             
             <form method="POST" action="{{ route('admin.perlombaan.store') }}" 

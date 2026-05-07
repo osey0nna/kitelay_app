@@ -40,6 +40,10 @@
                 outline: none !important;
             }
 
+            [x-cloak] {
+                display: none !important;
+            }
+
             ::selection {
                 background: #fbbf24;
                 color: #000;

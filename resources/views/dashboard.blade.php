@@ -6,10 +6,10 @@
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Admin Control Center</span>
             </div>
             
-            <h2 class="text-3xl font-black tracking-tight text-white uppercase sm:text-4xl">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white">
                 Halo, <span class="text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.5)]">{{ explode(' ', $user->name)[0] }}</span>
             </h2>
-            <p class="max-w-2xl text-base font-medium leading-relaxed text-white">
+            <p class="max-w-2xl text-sm md:text-base font-medium leading-relaxed text-white">
                 Ringkasan performa sistem dan metrik operasional kompetisi hari ini.
             </p>
         </div>
@@ -19,16 +19,7 @@
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
         <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-        @php
-            $metricClasses = [
-                'sky' => 'bg-gradient-to-r from-red-900/60 to-black text-amber-400 border-l-2 border-amber-400',
-                'orange' => 'bg-gradient-to-r from-orange-900/60 to-black text-orange-400 border-l-2 border-orange-500',
-                'emerald' => 'bg-gradient-to-r from-emerald-900/60 to-black text-emerald-400 border-l-2 border-emerald-500',
-                'slate' => 'bg-gradient-to-r from-neutral-800 to-black text-white border-l-2 border-slate-500',
-            ];
-        @endphp
-
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10">
             
             <div class="grid gap-6 lg:grid-cols-[1fr_0.8fr] transition-all duration-700 ease-out"
                  :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
@@ -64,11 +55,8 @@
                 @foreach ($stats['metrics'] as $metric)
                     <article class="rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm border border-neutral-800 bg-[#0a0a0c] p-6 shadow-lg hover:border-amber-500/50 hover:shadow-[0_0_25px_rgba(251,191,36,0.1)] transition-all hover:-translate-y-1 group relative overflow-hidden">
                         <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-600 group-hover:bg-amber-400 transition-colors"></div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center">
                             <p class="text-[11px] font-black uppercase tracking-widest text-white">{{ $metric['label'] }}</p>
-                            <span class="inline-flex px-2 py-1 text-[9px] font-black uppercase shadow-sm {{ $metricClasses[$metric['tone']] ?? $metricClasses['slate'] }}">
-                                {{ $metric['tone'] }}
-                            </span>
                         </div>
                         <p class="mt-6 text-4xl font-black tracking-tight text-white group-hover:text-amber-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]">{{ $metric['value'] }}</p>
                         <p class="mt-2 text-[12px] font-bold uppercase tracking-wider text-white">{{ $metric['helper'] }}</p>

@@ -6,10 +6,10 @@
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Peserta Dashboard</span>
             </div>
             
-            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                 Katalog <span class="text-amber-400">Lomba</span>
             </h2>
-            <p class="max-w-2xl text-sm font-medium leading-7 text-slate-400 sm:text-base">
+            <p class="max-w-2xl text-xs md:text-sm leading-7 text-slate-400">
                 Pilih perlombaan yang ingin kamu ikuti, lengkapi submission-mu, dan pantau hasil akhir dari satu pusat kendali.
             </p>
         </div>
@@ -22,12 +22,12 @@
         $visibleResultsCount = $myRegistrations->filter(fn ($registration) => $registration->status === \App\Models\Pendaftaran::STATUS_REVIEWED && $registration->perlombaan->resultsAreVisible())->count();
     @endphp
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 100)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 100)">
         
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
         <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10">
             
             <section class="rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-md rounded-bl-md border border-red-900/50 bg-gradient-to-br from-[#0a0a0c] to-[#050505] p-8 sm:p-10 shadow-[0_0_30px_rgba(220,38,38,0.15)] relative overflow-hidden transition-all duration-700 ease-out"
                      :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
@@ -36,7 +36,7 @@
                 <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <p class="text-[12px] font-black uppercase tracking-widest text-amber-500 mb-2">Lomba Tersedia</p>
-                        <h3 class="text-2xl font-black uppercase tracking-wide text-white sm:text-3xl">Pilih arena bertandingmu.</h3>
+                        <h3 class="text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-wide text-white">Pilih arena bertandingmu.</h3>
                         <p class="mt-4 text-[14px] font-medium leading-relaxed text-slate-400 max-w-xl">
                             Setelah mendaftar, kamu bisa langsung melengkapi dokumen submission, mengunggah karya, dan memantau status penilaian dewan juri.
                         </p>

@@ -51,7 +51,7 @@
 <section class="relative bg-black pt-32 pb-20 border-b border-red-900/30 overflow-hidden">
     <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none -z-0"></div>
 
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 relative z-10">
         <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
             
             <div>
@@ -71,7 +71,7 @@
                 </p>
             </div>
 
-            <div class="grid gap-4 sm:grid-cols-2 lg:pb-2">
+            <div class="grid gap-4 md:grid-cols-2 lg:pb-2">
                 <div class="rounded-tl-2xl rounded-br-2xl border border-neutral-800 bg-[#0a0a0c] p-6 shadow-lg backdrop-blur-sm relative overflow-hidden group hover:border-amber-500/50 transition-colors">
                     <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-600 group-hover:bg-amber-400 transition-colors"></div>
                     <p class="text-[11px] font-black uppercase tracking-widest text-slate-500">Lomba Aktif</p>

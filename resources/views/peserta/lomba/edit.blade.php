@@ -12,16 +12,16 @@
                 <span class="material-symbols-outlined text-[16px] text-amber-400">upload_file</span>
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Submission Arena</span>
             </div>
-            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">Submission <span class="text-amber-400">Lomba</span></h2>
-            <p class="text-sm font-medium text-slate-400">{{ $pendaftaran->perlombaan->nama_lomba }}</p>
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white">Submission <span class="text-amber-400">Lomba</span></h2>
+            <p class="text-xs md:text-sm font-medium text-slate-400">{{ $pendaftaran->perlombaan->nama_lomba }}</p>
         </div>
     </x-slot>
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
         
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
+        <div class="mx-auto max-w-5xl px-4 md:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
              :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
             
             <form method="POST" action="{{ route('peserta.lomba.update', $pendaftaran) }}" enctype="multipart/form-data" 
@@ -46,7 +46,7 @@
 
                         <div class="mt-4 rounded-xl border border-neutral-800 bg-black p-5">
                             <p class="font-black text-[11px] uppercase tracking-widest text-white mb-4">Format file yang didukung</p>
-                            <div class="grid gap-4 sm:grid-cols-2 text-[12px] text-slate-500 font-medium">
+                            <div class="grid gap-4 md:grid-cols-2 text-[12px] text-slate-500 font-medium">
                                 <div><p class="text-amber-500 font-black">Dokumen</p><p>PDF, DOCX, PPTX</p></div>
                                 <div><p class="text-amber-500 font-black">Arsip</p><p>ZIP, RAR</p></div>
                                 <div><p class="text-amber-500 font-black">Desain</p><p>JPG, PNG, SVG, PSD</p></div>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-neutral-800 pt-8">
+                <div class="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-t border-neutral-800 pt-8">
                     <p class="text-[11px] font-medium leading-relaxed text-slate-500 max-w-sm">File submission akan disimpan ke media penyimpanan aktif. Ganti file kapan saja sebelum deadline.</p>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="{{ route('peserta.lomba.index') }}" class="inline-flex items-center justify-center rounded-sm border border-neutral-700 bg-transparent px-6 py-3 text-[11px] font-black uppercase tracking-widest text-slate-300 hover:border-slate-500 transition-all skew-x-[-10deg]">

@@ -9,7 +9,7 @@
 
     <div id="cursor-glow" class="absolute w-[600px] h-[600px] bg-amber-500/15 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500 opacity-0 z-0"></div>
 
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 rounded-none border-l-4 border-amber-400 bg-gradient-to-r from-red-900/40 to-black px-4 py-2 text-[12px] font-black uppercase tracking-widest text-amber-400 backdrop-blur-sm shadow-[0_0_15px_rgba(251,191,36,0.1)]">
                 <span class="material-symbols-outlined text-[16px] text-amber-400">campaign</span>
@@ -28,7 +28,7 @@
             </p>
         </div>
 
-        <div class="mt-16 grid gap-6 lg:grid-cols-3">
+        <div class="mt-12 md:mt-16 grid gap-6 md:gap-8 lg:grid-cols-3">
             @forelse ($competitions as $competition)
                 
                 <article class="tilt-card flex flex-col rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-sm rounded-bl-sm border border-neutral-800 bg-[#0a0a0c] p-6 shadow-xl transition-colors hover:border-amber-500/70 hover:shadow-[0_0_30px_rgba(251,191,36,0.15)] group relative" 

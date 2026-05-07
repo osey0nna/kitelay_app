@@ -3,15 +3,15 @@
 @section('title', 'Syarat & Ketentuan')
 
 @section('content')
-<section class="bg-slate-50 pt-32 pb-12">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Syarat & Ketentuan</h1>
+<section class="bg-slate-50 pt-20 md:pt-32 pb-12">
+    <div class="mx-auto max-w-3xl px-4 md:px-6 lg:px-8 text-center">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900">Syarat & Ketentuan</h1>
         <p class="mt-4 text-[16px] text-slate-500">Pembaruan terakhir: {{ now()->translatedFormat('d F Y') }}</p>
     </div>
 </section>
 
-<section class="bg-white py-16">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+<section class="bg-white py-12 md:py-16">
+    <div class="mx-auto max-w-3xl px-4 md:px-6 lg:px-8">
         <div class="space-y-10 text-[16px] leading-relaxed text-slate-600">
             
             <div>

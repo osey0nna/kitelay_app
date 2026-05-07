@@ -1,13 +1,13 @@
 ﻿<x-app-layout>
     <x-slot name="header">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between relative z-10">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between relative z-10">
             <div class="flex flex-col gap-2">
                 <div class="inline-flex items-center gap-2 rounded-sm border-l-4 border-sky-400 bg-gradient-to-r from-sky-900/40 to-[#0a0a0c] px-4 py-2 w-fit shadow-[0_0_15px_rgba(56,189,248,0.1)]">
                     <span class="material-symbols-outlined text-[16px] text-sky-400">rule</span>
                     <span class="text-[11px] font-black uppercase tracking-widest text-sky-400">Admin Panel</span>
                 </div>
                 
-                <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                     Kriteria <span class="text-sky-400">Penilaian</span>
                 </h2>
                 <p class="max-w-2xl text-sm font-medium leading-7 text-slate-400">Lomba: <span class="text-white">{{ $perlombaan->nama_lomba }}</span></p>
@@ -30,10 +30,10 @@
         
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out"
              :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
             
-            <section class="grid gap-6 md:grid-cols-3">
+            <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <div class="tilt-card rounded-xl border border-neutral-800 bg-[#0a0a0c] p-6 shadow-xl hover:border-sky-500/30 transition-all">
                     <p class="text-[10px] font-black uppercase tracking-widest text-slate-500">Total Kriteria</p>
                     <p class="mt-2 text-4xl font-black text-white">{{ $kriterias->count() }}</p>

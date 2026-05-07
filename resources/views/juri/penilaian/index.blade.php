@@ -5,13 +5,13 @@
                 <span class="material-symbols-outlined text-[16px] text-amber-400">gavel</span>
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Juri Workspace</span>
             </div>
-            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">Daftar Tugas Juri</h2>
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white">Daftar Tugas Juri</h2>
         </div>
     </x-slot>
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
         
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out" 
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10 transition-all duration-700 ease-out" 
              :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'">
             
             <section class="rounded-xl border border-neutral-800 bg-[#0a0a0c] p-8 shadow-2xl">

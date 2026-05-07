@@ -39,7 +39,7 @@
                     </a>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 md:-my-px md:ms-10 md:flex">
                     <a href="{{ route('dashboard') }}" class="relative inline-flex items-center px-1 pt-1 text-[13px] font-black uppercase tracking-widest transition-colors duration-300 group {{ request()->routeIs('dashboard') ? 'text-amber-400' : 'text-slate-400 hover:text-amber-400' }}">
                         Dashboard
                         <span class="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-red-600 to-amber-400 transition-all duration-300 shadow-[0_0_8px_rgba(251,191,36,0.8)] {{ request()->routeIs('dashboard') ? 'w-full' : 'w-0 group-hover:w-full' }}"></span>
@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <div x-data="{ profileOpen: false }" class="relative z-[1000] hidden overflow-visible sm:flex sm:items-center sm:ms-6">
+            <div x-data="{ profileOpen: false }" class="relative z-[1000] hidden overflow-visible md:flex md:items-center md:ms-6">
                 <button
                     type="button"
                     @click="profileOpen = !profileOpen"
@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <div x-show="open" x-collapse class="hidden border-t border-red-900/50 bg-[#0a0a0c] sm:hidden shadow-[0_20px_40px_rgba(0,0,0,0.8)] relative z-50">
+    <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-3" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-3" class="sm:hidden absolute inset-x-0 top-full border-t border-red-900/50 bg-[#0a0a0c] shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-[1050]">
         <div class="space-y-1 px-4 pb-3 pt-4">
             <a href="{{ route('dashboard') }}" class="block px-4 py-3 text-[14px] font-black uppercase tracking-wider transition-colors border-l-4 {{ request()->routeIs('dashboard') ? 'border-amber-400 bg-red-900/20 text-amber-400' : 'border-transparent text-slate-400 hover:border-red-500 hover:bg-neutral-900 hover:text-amber-400' }}">
                 Dashboard

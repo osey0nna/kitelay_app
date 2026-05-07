@@ -5,26 +5,26 @@
                 <span class="material-symbols-outlined text-[16px] text-amber-400">info</span>
                 <span class="text-[11px] font-black uppercase tracking-widest text-amber-400">Persiapan Peserta</span>
             </div>
-            <h2 class="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl drop-shadow-md">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white drop-shadow-md">
                 Detail <span class="text-amber-400">Lomba</span>
             </h2>
-            <p class="text-sm font-medium text-slate-400">{{ $perlombaan->nama_lomba }}</p>
+            <p class="text-xs md:text-sm font-medium text-slate-400">{{ $perlombaan->nama_lomba }}</p>
         </div>
     </x-slot>
 
-    <div class="py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
+    <div class="py-6 md:py-10 bg-black min-h-screen relative overflow-hidden" x-data="{ mounted: false }" x-init="setTimeout(() => mounted = true, 50)">
         
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
         <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:px-6 lg:px-8 relative z-10">
             
             <section class="tilt-card rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-md rounded-bl-md border border-red-900/50 bg-[#0a0a0c] p-8 shadow-xl relative overflow-hidden transition-all duration-700 ease-out"
                      :class="mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
                 <div class="absolute top-0 left-0 w-2 h-full bg-red-600"></div>
                 <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
-                        <h1 class="text-3xl font-black uppercase tracking-wide text-white sm:text-4xl leading-tight">{{ $perlombaan->nama_lomba }}</h1>
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-wide text-white leading-tight">{{ $perlombaan->nama_lomba }}</h1>
                         <p class="mt-4 text-[14px] font-medium leading-relaxed text-slate-400 max-w-2xl">
                             Baca detail lomba dan rundown lengkap di halaman ini terlebih dahulu. Setelah itu baru lanjutkan pendaftaran agar alurnya lebih jelas dan terstruktur.
                         </p>
